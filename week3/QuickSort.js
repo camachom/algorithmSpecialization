@@ -1,16 +1,24 @@
-function QuickSort(array, start = 0, end = array.length - 1) {
-  if (start >= end) {
-    return;
+function comparisonCount(unsortedArray) {
+  let count = 0;
+
+  function QuickSort(array, start = 0, end = array.length - 1) {
+    if (start >= end) {
+      return;
+    }
+
+    count += end - start - 1;
+    // let pivot = array[start];
+    let borderIdx = subRoutine(array, start, end);
+    let leftArray = QuickSort(array, start, borderIdx - 1);
+    let rightArray = QuickSort(array, borderIdx + 1, end);
+
+    return array;
   }
 
-  // let pivot = array[start];
-  let borderIdx = subRoutine(array, start, end);
-
-  let leftArray = QuickSort(array, start, borderIdx - 1);
-  let rightArray = QuickSort(array, borderIdx + 1, end);
-
-  return array;
+  QuickSort(unsortedArray);
+  return count;
 }
+
 
 function subRoutine(array, start, end) {
   let i = start;
@@ -33,4 +41,4 @@ function subRoutine(array, start, end) {
   return i;
 }
 
-console.log(QuickSort([4,1,3,7,9, 10  ,100, 89, 76 ,8]));
+console.log(comparisonCount([100, 89, 76 ,8]));
