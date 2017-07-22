@@ -4,11 +4,10 @@ class Graph
   attr_accessor :nodes
 
   def initialize
-    @nodes = []
+    @nodes = {}
   end
 
   def add_edge(node_a, node_b)
-    node_a.edges.add(node_b.number)
-    node_b.edges.add(node_a.number)
+    node_a.edges << node_b.number
   end
 end

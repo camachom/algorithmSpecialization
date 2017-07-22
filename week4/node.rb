@@ -5,7 +5,7 @@ class Node
   attr_accessor :edges
 
   def initialize(number)
-    @edges = Set.new
+    @edges = []
     @number = number
   end
 end
